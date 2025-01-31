@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://blfny8wbq03hh"]
+[gd_scene load_steps=11 format=3 uid="uid://blfny8wbq03hh"]
 
-[ext_resource type="Script" path="res://scripts/basic_player.gd" id="1_7teca"]
-[ext_resource type="Texture2D" uid="uid://6b5kr1jo08th" path="res://assets/Chris Idle.png" id="2_28phf"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_70kuc"]
+[ext_resource type="Texture2D" uid="uid://6b5kr1jo08th" path="res://assets/old/Chris Idle.png" id="2_28phf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm20p"]
 atlas = ExtResource("2_28phf")
@@ -53,9 +53,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BasicPlayer" type="Node2D"]
-script = ExtResource("1_7teca")
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2tij"]
+radius = 8.06226
+
+[node name="BasicPlayer" type="CharacterBody2D"]
+script = ExtResource("1_70kuc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t26ef")
 frame_progress = 0.320022
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y2tij")

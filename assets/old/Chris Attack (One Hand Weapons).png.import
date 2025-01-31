@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31e1y7r82lh4"
-path="res://.godot/imported/Chris Minecart Character.png-71f68317d096bd5f9de3b5e049193dc8.ctex"
+uid="uid://dkl0x75c0huy4"
+path="res://.godot/imported/Chris Attack (One Hand Weapons).png-107662ec0bc156fbce8ba29defa6f2ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Chris Minecart Character.png"
-dest_files=["res://.godot/imported/Chris Minecart Character.png-71f68317d096bd5f9de3b5e049193dc8.ctex"]
+source_file="res://assets/old/Chris Attack (One Hand Weapons).png"
+dest_files=["res://.godot/imported/Chris Attack (One Hand Weapons).png-107662ec0bc156fbce8ba29defa6f2ba.ctex"]
 
 [params]
 

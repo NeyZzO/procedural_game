@@ -3,13 +3,11 @@ extends Node2D
 var noise: FastNoiseLite = FastNoiseLite.new();
 @onready var map: TileMap = $TileMap;
 
-@export var MAX_X: int = 1152;
-@export var MAX_Y: int = 648;
+@export var MAP_WIDTH: int = 700;
+@export var MAP_HEIGHT: int = 120;
 
-const atlas_grass: Vector2i = Vector2(1, 7);
-const atlas_grass_flowers: Vector2i = Vector2(6, 1);
-const atlas_dirt: Vector2i = Vector2(5, 3);
-const atlas_woder: Vector2i = Vector2(5, 6);
+const GRASS: Vector2i = Vector2i(2, 0);
+const DIRT: Vector2i = Vector2i(2, 0);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,21 +15,22 @@ func _ready() -> void:
 	noise.seed = randi();
 	
 	noise.noise_type = FastNoiseLite.TYPE_PERLIN;
-	noise.frequency = 0.01;  
+	noise.frequency = 0.01; 
+	print("Using seed : ", noise.seed)
 	draw_map();
 
 var test: Array[int] = [];
 
+func getHeight(x: int) -> int:
+	return int(noise.get_noise_1d(x) * 20 + 50);
+
 func draw_map() -> void:
-	for x in range(-MAX_X/2, MAX_X/2):
-		for y in range(-MAX_Y/2, MAX_Y/2):
-			var n: float = noise.get_noise_2d(x, y);
-			if n >= 0.05:
-				if n >= 0.5:
-					map.set_cell(0, Vector2i(x, y), 0, atlas_grass_flowers, 0);
-				elif n <= 0.1:
-					map.set_cell(0, Vector2i(x, y), 0, atlas_dirt, 0);
-				else:
-					map.set_cell(0, Vector2i(x, y), 0, atlas_grass, 0);
-			else:
-				map.set_cell(0, Vector2i(x, y), 0, atlas_woder, 0);
+	# First, we use a 1D noise to generate the height of the terrain
+	for x in range(MAP_WIDTH):
+		var surface_y: int = getHeight(x);
+		print(surface_y);
+		for y in range(MAP_HEIGHT):
+			if y == surface_y:
+				map.set_cell(1, Vector2i(x, y), 1, GRASS, 0);
+			elif y < surface_y:
+				map.set_cell(0, Vector2i(x, y), 1, DIRT, 0);

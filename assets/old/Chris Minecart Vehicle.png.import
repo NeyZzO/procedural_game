@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ebenmgqk0pk"
-path="res://.godot/imported/Chris Walk.png-1866dbe2015b43621a5c7959d9ce23bd.ctex"
+uid="uid://cp2ijudfrf6hy"
+path="res://.godot/imported/Chris Minecart Vehicle.png-00871654560ada02f3fedea6a9abd2df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Chris Walk.png"
-dest_files=["res://.godot/imported/Chris Walk.png-1866dbe2015b43621a5c7959d9ce23bd.ctex"]
+source_file="res://assets/old/Chris Minecart Vehicle.png"
+dest_files=["res://.godot/imported/Chris Minecart Vehicle.png-00871654560ada02f3fedea6a9abd2df.ctex"]
 
 [params]
 

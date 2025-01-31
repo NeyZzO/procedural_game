@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkm6kgx81yho2"
-path="res://.godot/imported/Chris Sword 01.png-33fa6594b09e437c4f4514613a285dc8.ctex"
+uid="uid://c6ebenmgqk0pk"
+path="res://.godot/imported/Chris Walk.png-d78f8f357fbf712648b28ca5b0cb3c6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Chris Sword 01.png"
-dest_files=["res://.godot/imported/Chris Sword 01.png-33fa6594b09e437c4f4514613a285dc8.ctex"]
+source_file="res://assets/old/Chris Walk.png"
+dest_files=["res://.godot/imported/Chris Walk.png-d78f8f357fbf712648b28ca5b0cb3c6c.ctex"]
 
 [params]
 
