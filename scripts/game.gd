@@ -7,7 +7,7 @@ var noise: FastNoiseLite = FastNoiseLite.new();
 @export var MAP_HEIGHT: int = 120;
 
 const GRASS: Vector2i = Vector2i(2, 0);
-const DIRT: Vector2i = Vector2i(2, 0);
+const DIRT: Vector2i = Vector2i(2, 1);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,11 +26,12 @@ func getHeight(x: int) -> int:
 
 func draw_map() -> void:
 	# First, we use a 1D noise to generate the height of the terrain
-	for x in range(MAP_WIDTH):
+	for x in range(-MAP_WIDTH/2, MAP_WIDTH/2):
 		var surface_y: int = getHeight(x);
 		print(surface_y);
 		for y in range(MAP_HEIGHT):
+			print(y);
 			if y == surface_y:
-				map.set_cell(1, Vector2i(x, y), 1, GRASS, 0);
-			elif y < surface_y:
+				map.set_cell(0, Vector2i(x, y), 1, GRASS, 0);
+			elif y > surface_y:
 				map.set_cell(0, Vector2i(x, y), 1, DIRT, 0);

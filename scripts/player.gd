@@ -9,16 +9,35 @@ enum PLAYER_MODE {
 	NOCLIP
 };
 
+var pMode: PLAYER_MODE = PLAYER_MODE.NOCLIP;
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and pMode == PLAYER_MODE.PHYSICS:
 		velocity += get_gravity() * delta
 
 	if Input.is_action_pressed("sprint"):
 		speed = 260;
 	else:
-		speed = 130.0; 
+		speed = 130.0;
 
+	# Handle noclip
+	if Input.is_action_just_released("switch_mode"):
+		if pMode == PLAYER_MODE.PHYSICS:
+			pMode = PLAYER_MODE.NOCLIP;
+		else:
+			pMode = PLAYER_MODE.PHYSICS;
+		print('Switched gamemode');
+
+	if pMode == PLAYER_MODE.NOCLIP:
+		if Input.is_action_pressed("up"):
+			velocity.y = -speed;
+		elif Input.is_action_pressed("down"):
+			velocity.y = speed;
+		else:
+			velocity.y = 0;
+	
+	$CollisionShape2D.disabled = pMode == PLAYER_MODE.NOCLIP;
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

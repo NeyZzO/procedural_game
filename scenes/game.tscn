@@ -283,6 +283,7 @@ layer_0/tile_data = PackedInt32Array(131067, 131073, 1, 131068, 131073, 1, 13106
 script = ExtResource("3_o8fhi")
 
 [node name="BasicPlayer" parent="." instance=ExtResource("4_oi7hw")]
+z_index = 10
 position = Vector2(0, -60)
 
 [node name="Camera2D" type="Camera2D" parent="BasicPlayer"]
