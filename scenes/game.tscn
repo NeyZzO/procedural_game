@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_kb5s3"]
 [ext_resource type="Texture2D" uid="uid://481w4cp2dyn3" path="res://assets/Tileset.png" id="2_211ip"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="3_o8fhi"]
-[ext_resource type="PackedScene" uid="uid://blfny8wbq03hh" path="res://scenes/basic_player.tscn" id="4_oi7hw"]
+[ext_resource type="PackedScene" uid="uid://blfny8wbq03hh" path="res://scenes/player.tscn" id="4_oi7hw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73tld"]
 texture = ExtResource("2_211ip")
@@ -90,7 +90,6 @@ texture = ExtResource("2_211ip")
 4:3/0 = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:3/0 = 0
-5:3/0/terrain = 1
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:3/0 = 0
 7:3/0 = 0
@@ -279,13 +278,36 @@ script = ExtResource("1_kb5s3")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_yefrh")
 format = 2
-layer_0/tile_data = PackedInt32Array(131067, 131073, 1, 131068, 131073, 1, 131069, 131073, 1, 131070, 131073, 1, 131071, 131073, 1, 65536, 131073, 1, 65537, 131073, 1, 65538, 131073, 1, 65539, 131073, 1, 65540, 131073, 1, 65541, 131073, 1, 131066, 131073, 1)
 script = ExtResource("3_o8fhi")
 
-[node name="BasicPlayer" parent="." instance=ExtResource("4_oi7hw")]
+[node name="Player" parent="." instance=ExtResource("4_oi7hw")]
 z_index = 10
 position = Vector2(0, -60)
 
-[node name="Camera2D" type="Camera2D" parent="BasicPlayer"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "FPS: X
+COORDS: X | Y "
+horizontal_alignment = 1

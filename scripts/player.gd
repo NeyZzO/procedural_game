@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player;
 
 var speed := 130.0
 const JUMP_VELOCITY := -300.0
@@ -9,7 +9,7 @@ enum PLAYER_MODE {
 	NOCLIP
 };
 
-var pMode: PLAYER_MODE = PLAYER_MODE.NOCLIP;
+var pMode: PLAYER_MODE = PLAYER_MODE.PHYSICS;
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
