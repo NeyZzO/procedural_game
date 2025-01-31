@@ -8,7 +8,7 @@ enum PLAYER_MODE {
 	PHYSICS,
 	NOCLIP
 };
-
+		
 var pMode: PLAYER_MODE = PLAYER_MODE.PHYSICS;
 
 func _physics_process(delta: float) -> void:
