@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsfwtexyqpt3j"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_kb5s3"]
+[ext_resource type="TileSet" uid="uid://gmgfxouvqsv2" path="res://data/tileset.tres" id="2_7o6df"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="3_o8fhi"]
+[ext_resource type="PackedScene" uid="uid://blfny8wbq03hh" path="res://scenes/player.tscn" id="4_oi7hw"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_kb5s3")
+MAP_WIDTH = null
+MAP_HEIGHT = null
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_7o6df")
+format = 2
+script = ExtResource("3_o8fhi")
+
+[node name="Player" parent="." instance=ExtResource("4_oi7hw")]
+z_index = 10
+position = Vector2(0, -60)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "FPS: X
+COORDS: X | Y "
+horizontal_alignment = 1
